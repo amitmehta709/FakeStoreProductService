@@ -44,4 +44,9 @@ public class ProductController {
             throws BadRequestException {
         return new ResponseEntity<>(productService.updateProduct(id,product),HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable("id") Long id) throws BadRequestException {
+        return new ResponseEntity<>(productService.deleteProduct(id), HttpStatus.OK);
+    }
 }

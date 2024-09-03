@@ -54,4 +54,13 @@ public class FakeStoreProductService implements ProductService
         return Product.from(fakeStoreApiClient.updateProduct(id, FakeStoreProductDto.from(product)));
     }
 
+    @Override
+    public Product deleteProduct(Long id) throws BadRequestException {
+        if(id<1)
+        {
+            throw new BadRequestException("Invalid Id: "+id);
+        }
+        return Product.from(fakeStoreApiClient.deleteProduct(id));
+    }
+
 }

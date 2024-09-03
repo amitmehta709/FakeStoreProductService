@@ -12,4 +12,5 @@ public interface ProductService {
     List<Product> getAllProducts(Map<String, String> queryParams);
     Product getProductById(Long id) throws NotFoundException, BadRequestException;
     Product updateProduct(Long id, Product product) throws BadRequestException;
+    Product deleteProduct(Long id) throws BadRequestException;
 }

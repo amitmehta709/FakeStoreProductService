@@ -2,6 +2,7 @@ package com.example.fakestoreproductservice.service;
 
 import com.example.fakestoreproductservice.dto.FakeStoreProductDto;
 import com.example.fakestoreproductservice.exceptions.NotFoundException;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -61,6 +62,14 @@ public class FakeStoreApiClient {
                 restTemplate.patchForObject(baseUrl+"/{id}", product, FakeStoreProductDto.class, productId);
 
         return fakeStoreProductDto;
+    }
+
+    public FakeStoreProductDto deleteProduct(Long productId) {
+        //restTemplate.delete(baseUrl+"/{id}",productId);
+        ResponseEntity<FakeStoreProductDto> response =
+                restTemplate.exchange(baseUrl+"/{id}", HttpMethod.DELETE,null,
+                        FakeStoreProductDto.class, productId);
+        return response.getBody();
     }
 
     /*How to pass both path parameter and query parameter*/
